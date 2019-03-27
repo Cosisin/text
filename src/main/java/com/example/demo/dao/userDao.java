@@ -38,37 +38,64 @@ public class userDao {
         @Override
         public T_Members mapRow(ResultSet resultSet, int i) throws SQLException {
             T_Members Mem = new T_Members();
-            Mem.setU_name(resultSet.getString("Uname"));
-            Mem.setU_password(resultSet.getString("Upassword"));
-            Mem.setU_address(resultSet.getString("Uaddress"));
-            Mem.setU_birthday(resultSet.getDate("Ubirthday"));
-            Mem.setU_email(resultSet.getString("Uemail"));
-            Mem.setU_gender(resultSet.getString("Ugender"));
-            Mem.setU_grade(resultSet.getString("Ugrade"));
-            Mem.setU_major(resultSet.getString("Umajor"));
-            Mem.setU_tel(resultSet.getString("Utel"));
+            Mem.setName(resultSet.getString("Uname"));
+            Mem.setPassword(resultSet.getString("Upassword"));
+            Mem.setAddress(resultSet.getString("Uaddress"));
+            Mem.setBirthday(resultSet.getDate("Ubirthday"));
+            Mem.setEmail(resultSet.getString("Uemail"));
+            Mem.setGender(resultSet.getString("Ugender"));
+            Mem.setGender(resultSet.getString("Ugrade"));
+            Mem.setMajor(resultSet.getString("Umajor"));
+            Mem.setTel(resultSet.getString("Utel"));
             return Mem;
         }
     };
 
-    public Boolean form_basic (t_goods Good){   //商品信息
-        try{
-            jdbcTemplate.update("insert into t_goods (Gid,Gname,Gbrand,Gprice,Gdate,Gplace,Gweight,Gintro,GArea) values (?,?,?,?,?,?,?,?,?)",Good.getG_id(),Good.getG_name(),Good.getG_brand(),Good.getG_price(),Good.getG_date(),Good.getG_place(),Good.getG_weight(),Good.getG_intro(),Good.getG_Area());
-            return true;
-        }catch (Exception a){
-            return false;
-
-        }
-    }
 
     public  Boolean registerindex (T_Members Member){  //用户注册信息
         try{
-            jdbcTemplate.update("insert into T_Members(Uname,Upassword,Ugender,Ubirthday,Uemail,Utel,Uaddress,Ugrade,Umajor) values (?,?,?,?,?,?,?,?,?)",Member.getU_name(),Member.getU_password(),Member.getU_gender(),Member.getU_birthday(),Member.getU_email(),Member.getU_tel(),Member.getU_address(),Member.getU_grade(),Member.getU_major());
+            jdbcTemplate.update("insert into T_Members(Uname,Upassword,Ugender,Ubirthday,Uemail,Utel,Uaddress,Ugrade,Umajor) values (?,?,?,?,?,?,?,?,?)",Member.getName(),Member.getPassword(),Member.getGender(),Member.getBirthday(),Member.getEmail(),Member.getTel(),Member.getAddress(),Member.getGender(),Member.getMajor());
             return  true;
         }catch (Exception a){
             return false;
         }
     }
+
+    /**
+     * 登录
+     * @param member
+     * @return
+     */
+    public String login(T_Members member){
+        List<String> passwords=jdbcTemplate.query("select Upassword from t_members where Uname='" + member.getName() + "'", new RowMapper<String>() {
+            @Override
+            public String mapRow(ResultSet resultSet, int i) throws SQLException {
+                String u= resultSet.getString("Upassword");
+                return u;
+            }
+        });
+        if (passwords.size()==0){
+            return "此账户不存在，请确认ID后输入";
+        }else {
+            if (passwords.get(0).equals(member.getPassword())){
+                return "登录成功";
+            }else {
+                return "密码错误";
+            }
+        }
+    }
+
+    public boolean inputGoods(t_goods goods){
+        try{
+            jdbcTemplate.update("insert into t_goods  values (?,?,?,?,?,?,?,?,?)" ,goods.getG_id(),goods.getG_name(),goods.getG_brand(),goods.getG_intro(),goods.getG_Area(),goods.getG_price(),goods.getG_date(),goods.getG_place(),goods.getG_weight());
+            return true;
+        }catch (Exception a){
+            return false;
+        }
+    }
+
+    public List<t_goods> getGoods(){ return jdbcTemplate.query("select * from t_goods",Goods); }
+
 
     public t_goods getT_goods(){
         List<t_goods> all=jdbcTemplate.query("select * from t_goods ",Goods);

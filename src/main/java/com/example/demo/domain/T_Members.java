@@ -3,85 +3,85 @@ package com.example.demo.domain;
 import java.util.Date;
 
 public class T_Members {//注册信息
-    private String U_name;
-    private String U_password;
-    private String U_gender;
-    private Date U_birthday;
-    private String U_email;
-    private String U_tel;
-    private String U_address;
-    private String U_grade;
-    private String U_major;
+    private String name;
+    private String password;
+    private String gender;
+    private Date birthday;
+    private String email;
+    private String tel;
+    private String address;
+    private String grade;
+    private String major;
 
-    public String getU_name() {
-        return U_name;
+    public String getName() {
+        return name;
     }
 
-    public void setU_name(String u_name) {
-        U_name = u_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getU_password() {
-        return U_password;
+    public String getPassword() {
+        return password;
     }
 
-    public void setU_password(String u_password) {
-        U_password = u_password;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getU_gender() {
-        return U_gender;
+    public String getGender() {
+        return gender;
     }
 
-    public void setU_gender(String u_gender) {
-        U_gender = u_gender;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
-    public Date getU_birthday() {
-        return U_birthday;
+    public Date getBirthday() {
+        return birthday;
     }
 
-    public void setU_birthday(Date u_birthday) {
-        U_birthday = u_birthday;
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
-    public String getU_email() {
-        return U_email;
+    public String getEmail() {
+        return email;
     }
 
-    public void setU_email(String u_email) {
-        U_email = u_email;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getU_tel() {
-        return U_tel;
+    public String getTel() {
+        return tel;
     }
 
-    public void setU_tel(String u_tel) {
-        U_tel = u_tel;
+    public void setTel(String tel) {
+        this.tel = tel;
     }
 
-    public String getU_address() {
-        return U_address;
+    public String getAddress() {
+        return address;
     }
 
-    public void setU_address(String u_address) {
-        U_address = u_address;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getU_grade() {
-        return U_grade;
+    public String getGrade() {
+        return grade;
     }
 
-    public void setU_grade(String u_grade) {
-        U_grade = u_grade;
+    public void setGrade(String grade) {
+        this.grade = grade;
     }
 
-    public String getU_major() {
-        return U_major;
+    public String getMajor() {
+        return major;
     }
 
-    public void setU_major(String u_major) {
-        U_major = u_major;
+    public void setMajor(String major) {
+        this.major = major;
     }
 }
