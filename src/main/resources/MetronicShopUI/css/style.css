@@ -131,8 +131,8 @@ body
 /******************边框样式**************/
 .home_btn{ border:1px solid #dddddd; padding:10px; margin:15px 0px;}
 .t_Record{ border:1px solid #ddd;  padding:10px; float:left}
-.news_style{ width:250px; float:left; border:1px solid #ddd;  height:213px; }
-.Order_Statistics{ width:280px; float:left; border:1px solid #ddd; margin-right:15px; height:213px;}
+.news_style{ width:250px; float:left; border:1px solid #ddd;  height:280px; }
+.Order_Statistics{ width:280px; float:left; border:1px solid #ddd; margin-right:15px; height:215px;}
 .news_style .title_name,
 .Order_Statistics .title_name {padding-left:20px;
 	font-size:16px;
